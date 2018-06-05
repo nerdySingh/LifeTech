@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>a9eda2f9-2680-4f6d-936c-1e7c9aa688c1</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>NNFinalInference_Prev.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>HeartbeatML</Name>
+    <RootNamespace>HeartbeatML</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="FeatureSelection.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GenerateDataset.py" />
+    <Compile Include="AggregateData.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="headers\DataReader.py" />
+    <Compile Include="headers\MySVM.py" />
+    <Compile Include="headers\names\featureLists.py" />
+    <Compile Include="headers\names\referenceFileNames.py" />
+    <Compile Include="headers\names\__init__.py" />
+    <Compile Include="headers\__init__.py" />
+    <Compile Include="NNExtract.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NNFinalInference_Prev.py" />
+    <Compile Include="NNFinalInference.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NNInference.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NNTrain.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SVMDeployment.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="headers\" />
+    <Folder Include="headers\names\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="headers\DataReader.pyc" />
+    <Content Include="headers\featureLists.pyc" />
+    <Content Include="headers\MySVM.pyc" />
+    <Content Include="headers\names\featureLists.pyc" />
+    <Content Include="headers\names\referenceFileNames.pyc" />
+    <Content Include="headers\names\__init__.pyc" />
+    <Content Include="headers\__init__.pyc" />
+    <Content Include="net.prototxt" />
+    <Content Include="solver.prototxt" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
+  <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

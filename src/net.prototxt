@@ -1,0 +1,97 @@
+layer {
+  name: "data"
+  type: "Input"
+  top: "data"
+  include {
+    phase: TRAIN
+  }
+  input_param { shape: { dim: 512 dim: 311 } }
+}
+
+layer {
+  name: "labels"
+  type: "Input"
+  top: "labels"
+  include {
+    phase: TRAIN
+  }
+  input_param { shape: { dim: 512 } }
+}
+
+layer {
+  name: "ip0"
+  type: "InnerProduct"
+  bottom: "data"
+  top: "ip0"
+  inner_product_param {
+    num_output: 64
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+layer {
+  name: "relu0"
+  type: "ReLU"
+  bottom: "ip0"
+  top: "ip0"
+}
+
+layer {
+  name: "ip0_next"
+  type: "InnerProduct"
+  bottom: "ip0"
+  top: "ip0_next"
+  inner_product_param {
+    num_output: 32
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+layer {
+  name: "relu0_next"
+  type: "ReLU"
+  bottom: "ip0_next"
+  top: "ip0_next"
+}
+
+layer {
+  name: "ip1"
+  type: "InnerProduct"
+  bottom: "ip0_next"
+  top: "ip1"
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+
+layer {
+	name: "prob"
+	type: "Softmax"
+	bottom: "ip1"
+	top: "prob"
+	include {
+		phase: TRAIN
+  }
+}
+
+layer {
+  name: "loss"
+  type: "SoftmaxWithLoss"
+  bottom: "ip1"
+  bottom: "labels"
+  top: "loss"
+}
